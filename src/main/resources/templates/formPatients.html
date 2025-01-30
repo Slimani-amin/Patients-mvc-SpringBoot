@@ -11,11 +11,12 @@ layout:decorate="template1">
 <body>
 
     <div layout:fragment="content1" >
+        <div class="col-md-6 offset-3">
 
         <form method="post" th:action="@{save}">
              <div>
-                <label>NOM</label>
-                <input class="form-control" type="text" name="nom" th:value="${patient.nom}">
+                <label for="nom" >NOM</label>
+                <input id="nom" class="form-control" type="text" name="nom" th:value="${patient.nom}">
                 <span th:errors="${patient.nom}"></span>
 
              </div>
@@ -28,7 +29,7 @@ layout:decorate="template1">
 
                 <div>
                     <label>Malade</label>
-                    <input class="form-control" type="checkbox" name="malade" th:checked="${patient.malade}">
+                    <input type="checkbox" name="malade" th:checked="${patient.malade}">
                     <span th:errors="${patient.malade}"></span>
                 </div>
 
@@ -42,6 +43,7 @@ layout:decorate="template1">
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
         </form>
+    </div>
  
 
 </div>

@@ -32,8 +32,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Patients</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="@{/formPatients}">Nouveau</a></li>
-              <li><a class="dropdown-item" href="@{/index}">Chercher</a></li>
+              <li><a class="dropdown-item" th:href="@{/formPatients}">Nouveau</a></li>
+              <li><a class="dropdown-item" th:href="@{/index}">Chercher</a></li>
               
             </ul>
           </li>
@@ -43,7 +43,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">[Username]</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="@{/formPatients}">Logout</a></li>
+              <li><a class="dropdown-item" th:href="@{/formPatients}">Logout</a></li>
             
               
             </ul>

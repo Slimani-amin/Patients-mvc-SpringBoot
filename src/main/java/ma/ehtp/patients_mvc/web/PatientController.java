@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -57,11 +60,19 @@ public class PatientController {
         return patientRepository.findAll();
     }
     
-    
+    @GetMapping("/formPatients")
     public String formPatients(Model model){
         model.addAttribute("patient", new Patient());
-        model.addAttribute("mode", "new");
         return "formPatients";
     }
+
+
+    @PostMapping(path = "/save")
+    public String savePatient(Patient patient){
+        patientRepository.save(patient);
+        return "formPatients";
+    }
+    
+    
 
 }
