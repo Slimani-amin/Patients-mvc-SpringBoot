@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 import ma.ehtp.patients_mvc.entities.Patient;
 import ma.ehtp.patients_mvc.repositories.PatientRepository;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -68,9 +70,10 @@ public class PatientController {
 
 
     @PostMapping(path = "/save")
-    public String savePatient(Patient patient){
+    public String savePatient(@Valid Patient patient, BindingResult bindingResult){
+        if(bindingResult.hasErrors()) return "formPatients";
         patientRepository.save(patient);
-        return "formPatients";
+        return "redirect:/formPatients";
     }
     
     
