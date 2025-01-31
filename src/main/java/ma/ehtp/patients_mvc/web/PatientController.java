@@ -70,10 +70,21 @@ public class PatientController {
 
 
     @PostMapping(path = "/save")
-    public String savePatient(@Valid Patient patient, BindingResult bindingResult){
+    public String savePatient(@Valid Patient patient, BindingResult bindingResult,@RequestParam(defaultValue = "") String keyword,@RequestParam(defaultValue = "0") int page){
         if(bindingResult.hasErrors()) return "formPatients";
         patientRepository.save(patient);
-        return "redirect:/formPatients";
+        return "redirect:/index?page="+page+"&keyword="+keyword;
+    }
+
+
+    @GetMapping("/editPatient")
+    public String editPatient(Model model, Long id, String keyword, int page){
+        Patient p = patientRepository.findById(id).orElse(null);
+        if(p == null) throw new RuntimeException("Patient not found");
+        model.addAttribute("patient", p);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("currentPage", page);
+        return "editPatient";
     }
     
     
