@@ -1,6 +1,6 @@
 package ma.ehtp.patients_mvc.sec.entities;
 
-import groovy.transform.builder.Builder;
+import lombok.Builder;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;

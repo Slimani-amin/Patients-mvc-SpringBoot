@@ -4,17 +4,19 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
-import groovy.transform.builder.Builder;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor @Builder
+@Data @AllArgsConstructor @NoArgsConstructor 
+@Builder
 public class AppUser {
     @Id
     private String userId;
