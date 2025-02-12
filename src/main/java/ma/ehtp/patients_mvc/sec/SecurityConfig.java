@@ -14,14 +14,20 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import lombok.AllArgsConstructor;
+import ma.ehtp.patients_mvc.sec.service.UserDetailsServiceImpl;
+
 
 
 @Configuration
 @EnableWebSecurity
 //@EnableMethodSecurity(prePostEnabled = true)
+@AllArgsConstructor
 public class SecurityConfig {
-    @Autowired
+
     private PasswordEncoder passwordEncoder;
+
+    private UserDetailsServiceImpl userDetailsServiceImpl;
 
    // @Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
@@ -50,6 +56,7 @@ public class SecurityConfig {
         httpSecurity.authorizeHttpRequests().requestMatchers("/admin/**").hasRole("ADMIN");
         httpSecurity.authorizeHttpRequests().anyRequest().authenticated();
         httpSecurity.exceptionHandling().accessDeniedPage("/notAuthorized");
+        httpSecurity.userDetailsService(userDetailsServiceImpl);
         return httpSecurity.build();
 
 
